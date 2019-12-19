@@ -16,6 +16,7 @@ class SaleDao(Dao):
         args = (no, code, price, saleCnt, marginRate)
         try:
             super().do_query(query=insert_sql, kargs=args)
+            print("추가하였습니다.")
             return True
         except Error:
             return False
@@ -25,6 +26,7 @@ class SaleDao(Dao):
         args = (code, price, saleCnt, marginPrice, no)
         try:
             self.do_query(query=update_sql, kargs=args)
+            print("수정하였습니다.")
             return True
         except Error:
             return False
@@ -34,6 +36,7 @@ class SaleDao(Dao):
         args = (no,)
         try:
             self.do_query(query=delete_sql, kargs=args)
+            print("삭제하였습니다.")
             return True
         except Error:
             return False

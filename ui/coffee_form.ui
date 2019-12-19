@@ -26,7 +26,7 @@
       <string notr="true">color: rgb(3, 83, 152);</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="product_tab">
       <attribute name="title">
@@ -34,7 +34,20 @@
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
-        <layout class="QFormLayout" name="formLayout">
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="2" column="1">
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item row="0" column="0">
           <widget class="QLabel" name="lbl_pcode">
            <property name="font">
@@ -50,10 +63,137 @@
          </item>
          <item row="0" column="1">
           <widget class="QLineEdit" name="le_pcode">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgba(0, 170, 255, 50);</string>
+            <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(0, 170, 255, 50);</string>
            </property>
           </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="le_name">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(0, 170, 255, 50);</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QPushButton" name="btn_padd">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(0, 148, 222);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>추가</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_pupdate">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(0, 148, 222);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>수정</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_pinit">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(0, 148, 222);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>초기화</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_resetP">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(0, 148, 222);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>정렬</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="lbl_name">
@@ -68,103 +208,185 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="le_name">
+         <item row="4" column="0" colspan="2">
+          <widget class="QTextBrowser" name="textBrowser">
            <property name="styleSheet">
-            <string notr="true">background-color: rgba(0, 170, 255, 50);</string>
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&amp;lt;추가&amp;gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;CODE, NAME 입력후 '추가'버튼 클릭&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&amp;lt;수정&amp;gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;1. 수정하고싶은 코드의 이름을 오른쪽 버튼 클릭&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;2. '수정' 클릭 &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;3. 이름(NAME) 변경 후 '수정' 버튼 클릭&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&amp;lt;초기화&amp;gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;코드와 이름칸을 초기화 할 때 '초기화' 버튼 클릭&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&amp;lt;정렬&amp;gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;코드를 추가하거나 수정하였을 때 코드 오름차순 정렬 원할 시 '정렬' 버튼 클릭 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
         </layout>
        </item>
-       <item row="1" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>68</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_padd">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(0, 148, 222);
-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>추가</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_pupdate">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(0, 148, 222);
-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>수정</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_pinit">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(0, 148, 222);
-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>초기화</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_resetP">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(0, 148, 222);
-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>새로고침</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0">
+       <item row="0" column="1">
         <widget class="QTableWidget" name="productTable">
+         <property name="palette">
+          <palette>
+           <active>
+            <colorrole role="WindowText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>17</red>
+               <green>17</green>
+               <blue>17</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Text">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>17</red>
+               <green>17</green>
+               <blue>17</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="ButtonText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>17</red>
+               <green>17</green>
+               <blue>17</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Highlight">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>0</red>
+               <green>148</green>
+               <blue>222</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="HighlightedText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="WindowText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>17</red>
+               <green>17</green>
+               <blue>17</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Text">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>17</red>
+               <green>17</green>
+               <blue>17</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="ButtonText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>17</red>
+               <green>17</green>
+               <blue>17</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Highlight">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>0</red>
+               <green>148</green>
+               <blue>222</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="HighlightedText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="WindowText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>17</red>
+               <green>17</green>
+               <blue>17</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Text">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>17</red>
+               <green>17</green>
+               <blue>17</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="ButtonText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>17</red>
+               <green>17</green>
+               <blue>17</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Highlight">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>0</red>
+               <green>148</green>
+               <blue>222</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="HighlightedText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font">
           <font>
            <family>Sans Serif</family>
-           <pointsize>9</pointsize>
+           <pointsize>10</pointsize>
            <weight>50</weight>
            <italic>false</italic>
            <bold>false</bold>
@@ -172,7 +394,22 @@ color: rgb(255, 255, 255);</string>
          </property>
          <property name="styleSheet">
           <string notr="true">color: rgb(17, 17, 17);
-font: 9pt &quot;Sans Serif&quot;;</string>
+selection-color: rgb(255, 255, 255);
+selection-background-color:  rgb(0, 148, 222);
+gridline-color: rgb(0, 138, 207);
+font: 10pt;</string>
+         </property>
+         <property name="showGrid">
+          <bool>true</bool>
+         </property>
+         <property name="gridStyle">
+          <enum>Qt::SolidLine</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>false</bool>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
          <property name="rowCount">
           <number>0</number>
@@ -211,6 +448,33 @@ font: 9pt &quot;Sans Serif&quot;;</string>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <layout class="QFormLayout" name="formLayout_2">
+         <item row="0" column="0">
+          <widget class="QLabel" name="lbl_no">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>NO</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="le_no">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(0, 170, 255, 50);
+color: rgb(0, 0, 0);</string>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="0">
           <widget class="QLabel" name="lbl_scode">
            <property name="font">
@@ -221,13 +485,6 @@ font: 9pt &quot;Sans Serif&quot;;</string>
            </property>
            <property name="text">
             <string>CODE </string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="le_scode">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgba(0, 170, 255, 50);</string>
            </property>
           </widget>
          </item>
@@ -246,8 +503,15 @@ font: 9pt &quot;Sans Serif&quot;;</string>
          </item>
          <item row="2" column="1">
           <widget class="QLineEdit" name="le_price">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgba(0, 170, 255, 50);</string>
+            <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(0, 170, 255, 50);</string>
            </property>
           </widget>
          </item>
@@ -266,8 +530,15 @@ font: 9pt &quot;Sans Serif&quot;;</string>
          </item>
          <item row="3" column="1">
           <widget class="QLineEdit" name="le_saleCnt">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgba(0, 170, 255, 50);</string>
+            <string notr="true">background-color: rgba(0, 170, 255, 50);
+color: rgb(0, 0, 0);</string>
            </property>
           </widget>
          </item>
@@ -286,28 +557,32 @@ font: 9pt &quot;Sans Serif&quot;;</string>
          </item>
          <item row="4" column="1">
           <widget class="QLineEdit" name="le_marginR">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgba(0, 170, 255, 50);</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="lbl_no">
            <property name="font">
             <font>
              <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
-           <property name="text">
-            <string>NO</string>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(0, 170, 255, 50);</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="le_no">
+         <item row="1" column="1">
+          <widget class="QComboBox" name="cmb_code">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgba(0, 170, 255, 50);</string>
+            <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(175, 229, 255, 50);
+selection-color: rgb(0, 100, 150);
+selection-background-color: rgba(255, 235, 255, 100);
+</string>
            </property>
           </widget>
          </item>
@@ -383,7 +658,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>새로고침</string>
+            <string>정렬</string>
            </property>
           </widget>
          </item>
@@ -393,12 +668,19 @@ color: rgb(255, 255, 255);</string>
         <widget class="QTableWidget" name="saleTable">
          <property name="font">
           <font>
+           <family>Sans Serif</family>
+           <pointsize>10</pointsize>
            <weight>50</weight>
+           <italic>false</italic>
            <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(26, 26, 26);</string>
+          <string notr="true">color: rgb(17, 17, 17);
+selection-color: rgb(255, 255, 255);
+selection-background-color:  rgb(0, 148, 222);
+gridline-color: rgb(0, 138, 207);
+font: 10pt &quot;Sans Serif&quot;;</string>
          </property>
          <property name="rowCount">
           <number>0</number>
@@ -464,7 +746,11 @@ color: rgb(255, 255, 255);</string>
        <item row="1" column="0">
         <widget class="QTableWidget" name="sortTable">
          <property name="styleSheet">
-          <string notr="true">color: rgb(11, 11, 11);</string>
+          <string notr="true">color: rgb(17, 17, 17);
+selection-color: rgb(255, 255, 255);
+selection-background-color:  rgb(0, 148, 222);
+gridline-color: rgb(0, 138, 207);
+font: 10pt &quot;Sans Serif&quot;;</string>
          </property>
          <property name="rowCount">
           <number>0</number>

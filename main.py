@@ -20,6 +20,7 @@ if __name__ == "__main__":
     # print(pool, connection)
 
     pdt = ProductDao()
+    # pdt.select_code()
     # pdt.delete_item('C001')
     res = pdt.select_item()
     # print(res)

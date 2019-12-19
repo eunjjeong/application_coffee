@@ -1,4 +1,6 @@
-from PyQt5 import uic
+import re
+
+from PyQt5 import uic, QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QVariant
 from PyQt5.QtWidgets import QWidget, QAbstractItemView, QHeaderView, QTableWidgetItem, QAction, QMessageBox
 
@@ -24,8 +26,8 @@ class CoffeeForm(QWidget):
         self.ui.show()
 
         self.ptable = create_table(table = self.ui.productTable, data = ["CODE", "NAME"])
-        self.stable = create_table(table = self.ui.saleTable, data = ["NO", "CODE", "PRICE", "SALECOUNT", "MARGINRATE"])
-        self.sorttable = create_table(table=self.ui.sortTable, data=['RANK', 'CODE', 'NAME', 'PRICE', 'SALECOUNT', 'SUPPLYPRICE', 'ADDTAX', 'SALEPRICE', 'MARGINRATE', 'MARGINPRICE'])
+        self.stable = create_table(table = self.ui.saleTable, data = ["NO", "CODE", "PRICE", "SALE COUNT", "MARGIN RATE"])
+        self.sorttable = create_table(table=self.ui.sortTable, data=['RANK', 'CODE', 'NAME', 'PRICE', 'SALE COUNT', 'SUPPLY PRICE', 'ADDTAX', 'SALE PRICE', 'MARGIN RATE', 'MARGIN PRICE'])
 
         # product slot/signal
         self.ui.btn_padd.clicked.connect(self.add_prd)
@@ -46,6 +48,9 @@ class CoffeeForm(QWidget):
         self.ui.btn_sinit.clicked.connect(self.init_coffee)
         self.ui.btn_resetS.clicked.connect(self.init_resetS)
 
+        # sale combobox
+        self.cmb_reset()
+
         self.set_context_smenu(self.stable)
 
         sad = SaleDao()
@@ -54,6 +59,8 @@ class CoffeeForm(QWidget):
         self.load_sdata(sdata)
 
         # sale sort
+        self.ui.cnt_rbtn.setChecked(True)
+        self.cnt_sort()
         self.ui.cnt_rbtn.clicked.connect(self.cnt_sort)
         self.ui.mr_rbtn.clicked.connect(self.margin_sort)
 
@@ -96,6 +103,7 @@ class CoffeeForm(QWidget):
         self.ptable.removeRow(selectionIdx.row())
         pdt = ProductDao()
         pdt.delete_item(code)
+        self.cmb_reset()
         QMessageBox.information(self, 'DELETE', '삭제하였습니다.', QMessageBox.Ok)
 
     def add_prd(self):
@@ -105,6 +113,7 @@ class CoffeeForm(QWidget):
         self.ptable.setItem(currentIdx, 0, item_code)
         self.ptable.setItem(currentIdx, 1, item_name)
         self.init_coffee()
+        self.cmb_reset()
         QMessageBox.information(self, 'ADD', '추가하였습니다.', QMessageBox.Ok)
 
     def get_prd_form_le(self):
@@ -123,6 +132,8 @@ class CoffeeForm(QWidget):
         item_name = QTableWidgetItem()
         item_name.setTextAlignment(Qt.AlignCenter)
         item_name.setData(Qt.DisplayRole, name)
+
+        item_code.setBackground(QtGui.QColor(141, 222, 255))
         return item_code, item_name
 
     def update_prd(self):
@@ -133,6 +144,9 @@ class CoffeeForm(QWidget):
         self.ptable.item(selectionIdx.row(), 1).setText(name)
         pdt = ProductDao()
         pdt.update_item(name, code)
+        self.init_coffee()
+        self.cnt_sort()
+        self.margin_sort()
         QMessageBox.information(self, 'UPDATE', '변경하였습니다.', QMessageBox.Ok)
 
     def init_coffee(self):
@@ -143,9 +157,14 @@ class CoffeeForm(QWidget):
         self.ui.le_marginR.clear()
         self.ui.le_price.clear()
         self.ui.le_saleCnt.clear()
-        self.ui.le_scode.clear()
+        self.ui.cmb_code.setCurrentIndex(0)
+
 
 # sale
+    def load_pdata_code(self, data):
+        for idx, (code) in enumerate(data()):
+            self.ui.cmb_code.addItem(str(code)[2:6])
+
     def init_resetS(self):
         self.stable.setRowCount(0)
         sad = SaleDao()
@@ -179,11 +198,15 @@ class CoffeeForm(QWidget):
         no = self.stable.item(selectionIdx.row(), 0).text()
         code = self.stable.item(selectionIdx.row(), 1).text()
         price = self.stable.item(selectionIdx.row(), 2).text()
+        price = re.sub('[,]', '', price)
         saleCnt = self.stable.item(selectionIdx.row(), 3).text()
         marginR = self.stable.item(selectionIdx.row(), 4).text()
+        marginR = re.sub('[%]', '', marginR)
 
         self.ui.le_no.setText(no)
-        self.ui.le_scode.setText(code)
+        index = self.ui.cmb_code.findText(code)
+        self.ui.cmb_code.setCurrentIndex(index)
+        # self.ui.le_scode.setText(code)
         self.ui.le_price.setText(price)
         self.ui.le_saleCnt.setText(saleCnt)
         self.ui.le_marginR.setText(marginR)
@@ -194,6 +217,8 @@ class CoffeeForm(QWidget):
         self.stable.removeRow(selectionIdx.row())
         sad = SaleDao()
         sad.delete_item(code)
+        self.cnt_sort()
+        self.margin_sort()
         QMessageBox.information(self, 'DELETE', '삭제하였습니다.', QMessageBox.Ok)
 
     def add_sad(self):
@@ -206,11 +231,14 @@ class CoffeeForm(QWidget):
         self.stable.setItem(currentIdx, 3, item_saleCnt)
         self.stable.setItem(currentIdx, 4, item_marginR)
         self.init_coffee()
+        self.cnt_sort()
+        self.margin_sort()
         QMessageBox.information(self, 'ADD', '추가하였습니다.', QMessageBox.Ok)
 
     def get_sad_form_le(self):
         no = self.ui.le_no.text()
-        code = self.ui.le_scode.text()
+        # code = self.ui.le_scode.text()
+        code = self.ui.cmb_code.currentText()
         price = self.ui.le_price.text()
         saleCnt = self.ui.le_saleCnt.text()
         marginR = self.ui.le_marginR.text()
@@ -240,12 +268,14 @@ class CoffeeForm(QWidget):
         item_marginR.setTextAlignment(Qt.AlignCenter)
         item_marginR.setData(Qt.DisplayRole, str(marginR) + '%')
 
+        item_code.setBackground(QtGui.QColor(141, 222, 255))
         return item_no, item_code, item_price, item_saleCnt, item_marginR
 
     def update_sad(self):
         selectionIdx = self.stable.selectedIndexes()[0]
         no = self.ui.le_no.text()
-        code = self.ui.le_scode.text()
+        # code = self.ui.le_scode.text()
+        code = self.ui.cmb_code.currentText()
         price = self.ui.le_price.text()
         saleCnt = self.ui.le_saleCnt.text()
         marginR = self.ui.le_marginR.text()
@@ -256,6 +286,9 @@ class CoffeeForm(QWidget):
         self.stable.item(selectionIdx.row(), 4).setText(marginR + '%')
         sad = SaleDao()
         sad.update_item(code, price, saleCnt, marginR, no)
+        self.init_coffee()
+        self.cnt_sort()
+        self.margin_sort()
         QMessageBox.information(self, 'UPDATE', '변경하였습니다.', QMessageBox.Ok)
 
 # sale sort
@@ -317,6 +350,9 @@ class CoffeeForm(QWidget):
         item_marginP.setTextAlignment(Qt.AlignVCenter | Qt.AlignRight)
         item_marginP.setData(Qt.DisplayRole, format(marginP, ',d'))
 
+        item_code.setBackground(QtGui.QColor(131, 222, 255))
+        item_saleP.setBackground(QtGui.QColor(178, 243, 255))
+        item_marginP.setBackground(QtGui.QColor(178, 243, 255))
         return item_rank, item_code, item_name, item_price, item_saleCnt, item_supplyP, item_addTax, item_saleP, item_marginR, item_marginP
 
     def cnt_sort(self):
@@ -332,4 +368,11 @@ class CoffeeForm(QWidget):
         sortdata = sad.call_procedure2
         self.sortdata = sortdata or [()]
         self.load_sortdata(sortdata)
+
+    def cmb_reset(self):
+        self.ui.cmb_code.clear()
+        pdt = ProductDao()
+        pcode = pdt.select_code
+        self.pcode = pcode or [()]
+        self.load_pdata_code(pcode)
 
