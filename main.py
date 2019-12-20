@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QApplication
-
 from dao.product_dao import ProductDao
 from dao.sale_dao import SaleDao
 from db_connection.connection_pool import ConnectionPool

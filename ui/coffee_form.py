@@ -16,6 +16,7 @@ def create_table(table=None, data=None):
     table.setEditTriggers(QAbstractItemView.NoEditTriggers)
     # 균일한 간격으로 재배치
     table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+    table.horizontalHeader().setStyleSheet("Background-color:rgb(165, 212, 255);border-radius:15px;")
     return table
 
 

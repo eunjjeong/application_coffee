@@ -56,7 +56,7 @@ class ProductDao(Dao):
             cursor.close()
             conn.close()
 
-    def select_code(self, code=None):
+    def select_code(self):
         try:
             conn = self.connection_pool.get_connection()
             cursor = conn.cursor()
