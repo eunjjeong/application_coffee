@@ -1,3 +1,3 @@
 # application_coffee
 PycharmProjects</br> 
-application coffee projects (pyqt+mysql)
+application coffee project (pyqt+mysql)
